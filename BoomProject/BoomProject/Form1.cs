@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace BoomProject
 {
-    public partial class MainForm : Form
+    public partial class Form1 : Form
     {
-        public MainForm()
+        public Form1()
         {
             InitializeComponent();
-            this.Size = new Size(100, 200);
         }
     }
 }
