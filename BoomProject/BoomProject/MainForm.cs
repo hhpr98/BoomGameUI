@@ -15,7 +15,6 @@ namespace BoomProject
         public MainForm()
         {
             InitializeComponent();
-            this.Size = new Size(100, 200);
         }
     }
 }

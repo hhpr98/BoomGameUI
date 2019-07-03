@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Start
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 247);
-            this.Name = "Start";
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "Start";
-            this.ResumeLayout(false);
-
         }
 
         #endregion
