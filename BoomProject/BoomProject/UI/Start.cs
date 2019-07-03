@@ -23,7 +23,16 @@ namespace BoomProject
         #region Event
         private void btnOK_Click(object sender, EventArgs e)
         {
-            MainForm frm = new MainForm((int)txtRow.Value, (int)txtColumn.Value, (int)txtNumBoom.Value);
+            int row = (int)txtRow.Value;
+            int col = (int)txtColumn.Value;
+            int boom = (int)txtNumBoom.Value;
+            int maxboom = row * col - 2;
+            if (boom>maxboom)
+            {
+                MessageBox.Show(String.Format("Số boom không thể vượt tối đa. Tối đa : {0}", maxboom), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            MainForm frm = new MainForm(row,col ,boom);
             this.Hide();
             frm.ShowDialog();
             this.Show();
