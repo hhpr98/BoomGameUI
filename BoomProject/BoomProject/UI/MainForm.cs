@@ -16,5 +16,14 @@ namespace BoomProject
         {
             InitializeComponent();
         }
+
+        private int row, col, boom;
+        public MainForm(int row,int col,int boom)
+        {
+            InitializeComponent();
+            this.row = row;
+            this.col = col;
+            this.boom = boom;
+        }
     }
 }
