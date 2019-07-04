@@ -41,12 +41,12 @@
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cáchChơiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtRow = new System.Windows.Forms.Label();
-            this.txtCol = new System.Windows.Forms.Label();
             this.txtBoom = new System.Windows.Forms.Label();
+            this.txtCol = new System.Windows.Forms.Label();
+            this.txtRow = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -168,27 +168,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // label1
+            // txtBoom
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(6, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Số hàng";
+            this.txtBoom.AutoSize = true;
+            this.txtBoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoom.Location = new System.Drawing.Point(105, 84);
+            this.txtBoom.Name = "txtBoom";
+            this.txtBoom.Size = new System.Drawing.Size(16, 16);
+            this.txtBoom.TabIndex = 5;
+            this.txtBoom.Text = "1";
             // 
-            // label2
+            // txtCol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(6, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Số cột";
+            this.txtCol.AutoSize = true;
+            this.txtCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCol.Location = new System.Drawing.Point(105, 58);
+            this.txtCol.Name = "txtCol";
+            this.txtCol.Size = new System.Drawing.Size(16, 16);
+            this.txtCol.TabIndex = 4;
+            this.txtCol.Text = "3";
+            // 
+            // txtRow
+            // 
+            this.txtRow.AutoSize = true;
+            this.txtRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRow.Location = new System.Drawing.Point(105, 32);
+            this.txtRow.Name = "txtRow";
+            this.txtRow.Size = new System.Drawing.Size(16, 16);
+            this.txtRow.TabIndex = 3;
+            this.txtRow.Text = "3";
             // 
             // label3
             // 
@@ -201,35 +209,27 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Số boom";
             // 
-            // txtRow
+            // label2
             // 
-            this.txtRow.AutoSize = true;
-            this.txtRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRow.Location = new System.Drawing.Point(105, 32);
-            this.txtRow.Name = "txtRow";
-            this.txtRow.Size = new System.Drawing.Size(16, 16);
-            this.txtRow.TabIndex = 3;
-            this.txtRow.Text = "3";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(6, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Số cột";
             // 
-            // txtCol
+            // label1
             // 
-            this.txtCol.AutoSize = true;
-            this.txtCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCol.Location = new System.Drawing.Point(105, 58);
-            this.txtCol.Name = "txtCol";
-            this.txtCol.Size = new System.Drawing.Size(16, 16);
-            this.txtCol.TabIndex = 4;
-            this.txtCol.Text = "3";
-            // 
-            // txtBoom
-            // 
-            this.txtBoom.AutoSize = true;
-            this.txtBoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoom.Location = new System.Drawing.Point(105, 84);
-            this.txtBoom.Name = "txtBoom";
-            this.txtBoom.Size = new System.Drawing.Size(16, 16);
-            this.txtBoom.TabIndex = 5;
-            this.txtBoom.Text = "1";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(6, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Số hàng";
             // 
             // panelMain
             // 
