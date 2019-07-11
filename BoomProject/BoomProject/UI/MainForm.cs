@@ -20,12 +20,13 @@ namespace BoomProject
         #region publicValue
         private int row, col, boom, notboom;
         char[,] arr = new char[12, 12]; // tính từ 1-10, 0 vs 11 dùng để làm các biên
-                                      // vd
-                                      // 0  0  0  0
-                                      // 0  B  3  0
-                                      // 0  B  B  0
-                                      // 0  B  3  0
-                                      // 0  0  0  0
+                                        // vd
+                                        // 0  0  0  0
+                                        // 0  B  3  0
+                                        // 0  B  B  0
+                                        // 0  B  3  0
+                                        // 0  0  0  0
+        bool[,] arrOpen = new bool[12, 12]; // đánh dấu mảng arr đã mở những ô nào
         #endregion
 
         public MainForm(int row, int col, int boom)
@@ -53,8 +54,13 @@ namespace BoomProject
             // create '0' character
             for (int i=0;i<12;i++)
             {
-                for (int j = 0; j < 12; j++) arr[i, j] = '0';
+                for (int j = 0; j < 12; j++)
+                {
+                    arr[i, j] = '0';
+                    arrOpen[i, j] = false; // đánh dấu chưa mở
+                }
             }
+
 
             // create randomize boom
             Random r = new Random();
@@ -135,6 +141,44 @@ namespace BoomProject
             }
         }
 
+        private void LoadBOOMScreenDefeat()
+        {
+            int Xlocal = 10, Ylocal = 10;
+            panelMain.Controls.Clear();
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    Button btn = new Button();
+                    btn.Size = new Size(60, 60);
+                    btn.Name = "btn" + i.ToString() + j.ToString(); // btn01,btn02,btn03,...
+                    if (arrOpen[i+1,j+1]==true && arr[i+1,j+1]!='B')
+                    {
+                        btn.Text = arr[i+1,j+1].ToString();
+                        btn.Font = new Font("Arial", 22F, FontStyle.Bold);
+                        btn.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        btn.Text = "";
+                    }
+                    btn.BackColor = Color.Red;
+                    btn.Location = new Point(Xlocal, Ylocal);
+                    //btn.Click += Btn_Click;
+                    if (arr[i+1,j+1]=='B')
+                    {
+                        btn.BackColor = Color.White;
+                        Bitmap avt = new Bitmap(Application.StartupPath + "\\Resources\\Mine.png");
+                        btn.Image = avt;
+                    }
+                    panelMain.Controls.Add(btn);
+                    Xlocal += 70;
+                }
+                Xlocal = 10;
+                Ylocal += 70;
+            }
+        }
+
         private void Btn_Click(object sender, EventArgs e)
         {
             //char c = '3';
@@ -146,8 +190,10 @@ namespace BoomProject
             string txt = b.Name; // ex : txt01
             int arr_i = (txt[3] - '0') + 1;
             int arr_j = (txt[4] - '0') + 1;
+            arrOpen[arr_i, arr_j] = true; // đánh dấu đã mở ô này
             if (arr[arr_i,arr_j]=='B')
             {
+                LoadBOOMScreenDefeat();
                 MessageBox.Show("BOOMMMM!");
             }
             else
@@ -173,27 +219,65 @@ namespace BoomProject
 
         private void cấuHìnhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var btn = MessageBoxButtons.OKCancel;
+            var img = MessageBoxIcon.Question;
+            var title = "Thông báo";
+            var msg = "Bạn muốn lưu lại thông tin ván đấu hiện tại?";
+            var res = MessageBox.Show(msg, title, btn, img);
+            if (res == DialogResult.OK) // save
+            {
+                lưuVánToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void giớiThiệuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var btn = MessageBoxButtons.OK;
+            var img = MessageBoxIcon.Information;
+            var title = "Giới thiệu";
+            var msg = "Boom game, v1.0. Date release : 11/07/2019";
+            MessageBox.Show(msg, title, btn, img);
         }
 
         private void tácGiảToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var btn = MessageBoxButtons.OK;
+            var img = MessageBoxIcon.Information;
+            var title = "Tác giả";
+            var msg = "Nguyễn Hữu Hòa, Khoa CNTT,\nTrường đại học KHTN - ĐHQGTPHCM";
+            MessageBox.Show(msg, title, btn, img);
         }
 
         private void cáchChơiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var btn = MessageBoxButtons.OK;
+            var img = MessageBoxIcon.Information;
+            var title = "Cách chơi";
+            var msg = "1. Cấu hình game, cài đặt kích thước, số boom\n2. Click chọn những ô không có boom\n3. Nếu có boom, end game\nChức năng gắng cờ dùng để đánh dấu boom khá hữu dụng đó bạn :))\nCố gắng gỡ hết boom bạn nhé. Good luck";
+            MessageBox.Show(msg, title, btn, img);
         }
 
         private void vánMớiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var btn = MessageBoxButtons.OKCancel;
+            var img = MessageBoxIcon.Question;
+            var title = "Thông báo";
+            var msg = "Bạn muốn lưu lại thông tin ván đấu hiện tại?";
+            var res = MessageBox.Show(msg, title, btn, img);
+            if (res == DialogResult.OK) // save
+            {
+                lưuVánToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                LoadBOOMArray();
+                panelMain.Controls.Clear();
+                LoadBOOMScreen();
+            }
         }
 
         private void chơiTiếpToolStripMenuItem_Click(object sender, EventArgs e)
