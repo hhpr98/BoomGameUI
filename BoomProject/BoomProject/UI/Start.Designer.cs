@@ -77,7 +77,7 @@
             0,
             0});
             this.txtRow.Minimum = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
@@ -85,7 +85,7 @@
             this.txtRow.Size = new System.Drawing.Size(41, 22);
             this.txtRow.TabIndex = 2;
             this.txtRow.Value = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
@@ -99,7 +99,7 @@
             0,
             0});
             this.txtColumn.Minimum = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
@@ -107,7 +107,7 @@
             this.txtColumn.Size = new System.Drawing.Size(41, 22);
             this.txtColumn.TabIndex = 3;
             this.txtColumn.Value = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
