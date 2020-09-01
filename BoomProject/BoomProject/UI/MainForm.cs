@@ -39,11 +39,11 @@ namespace BoomProject
             this.boom = boom;
             txtBoom.Text = boom.ToString();
             this.notboom = row * col - boom;
-            int sizeX = 300 + 10 + col * 70 + 50; // 300: từ 0->panel, 10 : lề từ panel -> button 1 , 70 : button size(60) + lề(10), 50 : từ panel -> footer
-            int sizeY = 50 + 10 + row * 70 + 50 + 24; // 24 : menustrip
+            int sizeX = 300 + 10 + col * 50 + 50; // 300: từ 0->panel, 10 : lề từ panel -> button 1 , 50 : button size(50) + lề(0), 50 : từ panel -> footer
+            int sizeY = 50 + 10 + row * 50 + 50 + 24; // 24 : menustrip
             this.Size = new Size(sizeX, sizeY);
-            panelMain.Size = new Size(10 + col * 70, 10 + row * 70);
-            panelMain.Location = new Point(300, 50);
+            panelMain.Size = new Size(10 + col * 50 + 5, 10 + row * 50 + 5);
+            panelMain.Location = new Point(280, 50);
             LoadBOOMArray();
             LoadBOOMScreen();
         }
@@ -127,17 +127,17 @@ namespace BoomProject
                 for (int j=0;j<col;j++)
                 {
                     Button btn = new Button();
-                    btn.Size = new Size(60, 60);
+                    btn.Size = new Size(50, 50);
                     btn.Name = "btn" + i.ToString() + j.ToString(); // btn01,btn02,btn03,...
                     btn.Text = "";
                     btn.BackColor = Color.Red;
                     btn.Location = new Point(Xlocal, Ylocal);
                     btn.Click += Btn_Click;
                     panelMain.Controls.Add(btn);
-                    Xlocal += 70;
+                    Xlocal += 50;
                 }
                 Xlocal = 10;
-                Ylocal += 70;
+                Ylocal += 50;
             }
         }
 
@@ -150,7 +150,7 @@ namespace BoomProject
                 for (int j = 0; j < col; j++)
                 {
                     Button btn = new Button();
-                    btn.Size = new Size(60, 60);
+                    btn.Size = new Size(50, 50);
                     btn.Name = "btn" + i.ToString() + j.ToString(); // btn01,btn02,btn03,...
                     if (arrOpen[i+1,j+1]==true && arr[i+1,j+1]!='B')
                     {
@@ -172,10 +172,10 @@ namespace BoomProject
                         btn.Image = avt;
                     }
                     panelMain.Controls.Add(btn);
-                    Xlocal += 70;
+                    Xlocal += 55;
                 }
                 Xlocal = 10;
-                Ylocal += 70;
+                Ylocal += 55;
             }
         }
 
@@ -239,7 +239,7 @@ namespace BoomProject
             var btn = MessageBoxButtons.OK;
             var img = MessageBoxIcon.Information;
             var title = "Giới thiệu";
-            var msg = "Boom game, v1.0. Date release : 11/07/2019";
+            var msg = "Boom game, v2.1. Date release : 02/09/2020";
             MessageBox.Show(msg, title, btn, img);
         }
 
