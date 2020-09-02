@@ -75,41 +75,41 @@
             this.lưuVánToolStripMenuItem,
             this.thoátToolStripMenuItem});
             this.tùyChọnToolStripMenuItem.Name = "tùyChọnToolStripMenuItem";
-            this.tùyChọnToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.tùyChọnToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.tùyChọnToolStripMenuItem.Text = "Tùy chọn";
             // 
             // cấuHìnhToolStripMenuItem
             // 
             this.cấuHìnhToolStripMenuItem.Name = "cấuHìnhToolStripMenuItem";
-            this.cấuHìnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cấuHìnhToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.cấuHìnhToolStripMenuItem.Text = "Cấu hình";
             this.cấuHìnhToolStripMenuItem.Click += new System.EventHandler(this.cấuHìnhToolStripMenuItem_Click);
             // 
             // vánMớiToolStripMenuItem
             // 
             this.vánMớiToolStripMenuItem.Name = "vánMớiToolStripMenuItem";
-            this.vánMớiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vánMớiToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.vánMớiToolStripMenuItem.Text = "Ván mới";
             this.vánMớiToolStripMenuItem.Click += new System.EventHandler(this.vánMớiToolStripMenuItem_Click);
             // 
             // chơiTiếpToolStripMenuItem
             // 
             this.chơiTiếpToolStripMenuItem.Name = "chơiTiếpToolStripMenuItem";
-            this.chơiTiếpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chơiTiếpToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.chơiTiếpToolStripMenuItem.Text = "Chơi tiếp";
             this.chơiTiếpToolStripMenuItem.Click += new System.EventHandler(this.chơiTiếpToolStripMenuItem_Click);
             // 
             // lưuVánToolStripMenuItem
             // 
             this.lưuVánToolStripMenuItem.Name = "lưuVánToolStripMenuItem";
-            this.lưuVánToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lưuVánToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.lưuVánToolStripMenuItem.Text = "Lưu ván";
             this.lưuVánToolStripMenuItem.Click += new System.EventHandler(this.lưuVánToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 
@@ -119,7 +119,7 @@
             this.giớiThiệuToolStripMenuItem,
             this.tácGiảToolStripMenuItem});
             this.thôngTinToolStripMenuItem.Name = "thôngTinToolStripMenuItem";
-            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.thôngTinToolStripMenuItem.Text = "Thông tin";
             // 
             // giớiThiệuToolStripMenuItem
@@ -141,7 +141,7 @@
             this.trợGiúpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cáchChơiToolStripMenuItem});
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
             // 
             // cáchChơiToolStripMenuItem
@@ -252,7 +252,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Boom Game v1.0";
+            this.Text = "Boom Game v3.0";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

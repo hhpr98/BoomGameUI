@@ -17,6 +17,7 @@ namespace BoomProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Start());
+            //Application.Run(new MainForm(3, 3, 1));
         }
     }
 }
