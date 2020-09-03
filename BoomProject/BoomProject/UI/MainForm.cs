@@ -285,6 +285,7 @@ namespace BoomProject
             if (res == DialogResult.OK) // save
             {
                 lưuVánToolStripMenuItem_Click(sender, e);
+                this.Close();
             }
             else
             {
