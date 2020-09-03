@@ -184,6 +184,45 @@ namespace BoomProject
             }
         }
 
+        // Load chơi game tiếp
+        private void LoadBOOMScreenContinue()
+        {
+            int Xlocal = 10, Ylocal = 10;
+            panelMain.Controls.Clear();
+            for (int i = 1; i <= row; i++)
+            {
+                for (int j = 1; j <= col; j++)
+                {
+                    Button btn = new Button();
+                    btn.Size = new Size(50, 50);
+                    btn.Name = "btn" + i.ToString() + j.ToString(); // btn11,btn12,btn13,btn21,...
+                    if (arrOpen[i, j] == true && arr[i, j] != 'B')
+                    {
+                        btn.Text = arr[i, j].ToString();
+                        btn.Font = new Font("Arial", 22F, FontStyle.Bold);
+                        btn.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        btn.Text = "";
+                    }
+                    btn.BackColor = Color.Red;
+                    btn.Location = new Point(Xlocal, Ylocal);
+                    //btn.Click += Btn_Click;
+                    if (arr[i, j] == 'B')
+                    {
+                        btn.BackColor = Color.White;
+                        Bitmap avt = new Bitmap(Application.StartupPath + "\\Resources\\Mine.png");
+                        btn.Image = avt;
+                    }
+                    panelMain.Controls.Add(btn);
+                    Xlocal += 50;
+                }
+                Xlocal = 10;
+                Ylocal += 50;
+            }
+        }
+
         private void Btn_Click(object sender, EventArgs e)
         {
             //char c = '3';
@@ -201,6 +240,9 @@ namespace BoomProject
             {
                 LoadBOOMScreenDefeat();
                 MessageBox.Show("BOOMMMM!");
+                LoadBOOMArray();
+                panelMain.Controls.Clear();
+                LoadBOOMScreen();
             }
             else if (arr[arr_i, arr_j] == '0') // là ô 0, thực hiện hành động mở nó và mở những ô 0 bên cạnh
             {
@@ -219,6 +261,9 @@ namespace BoomProject
                 if (notboom==0) // winner
                 {
                     MessageBox.Show("Winner!");
+                    LoadBOOMArray();
+                    panelMain.Controls.Clear();
+                    LoadBOOMScreen();
                 }
             }
         }
@@ -276,26 +321,32 @@ namespace BoomProject
 
         private void vánMớiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var btn = MessageBoxButtons.OKCancel;
+            var btn = MessageBoxButtons.YesNoCancel;
             var img = MessageBoxIcon.Question;
             var title = "Thông báo";
             var msg = "Bạn muốn lưu lại thông tin ván đấu hiện tại?";
             var res = MessageBox.Show(msg, title, btn, img);
-            if (res == DialogResult.OK) // save
+            if (res == DialogResult.Yes) // save
             {
                 lưuVánToolStripMenuItem_Click(sender, e);
+                LoadBOOMArray();
+                panelMain.Controls.Clear();
+                LoadBOOMScreen();
             }
-            else
+            else if (res == DialogResult.No) // don't save
             {
                 LoadBOOMArray();
                 panelMain.Controls.Clear();
                 LoadBOOMScreen();
             }
+            else // Cancel
+            {
+                // nothing
+            }    
         }
 
         private void chơiTiếpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Stream openStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Mở game";
             openFileDialog.Filter = "Boom Game File (*.boom)|*.boom|All files (*.*)|*.*";
@@ -309,7 +360,7 @@ namespace BoomProject
                     string[] filelines = File.ReadAllLines(filename);
                     string txt = filelines[0];
                     var gameConfig = JsonConvert.DeserializeObject<GameConfig>(txt);
-                    MessageBox.Show(gameConfig.col.ToString());
+                    //MessageBox.Show(gameConfig.col.ToString());
 
 
                 }
