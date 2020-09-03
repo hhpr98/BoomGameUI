@@ -1,9 +1,12 @@
-﻿using System;
+﻿using BoomProject.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -292,12 +295,51 @@ namespace BoomProject
 
         private void chơiTiếpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Stream openStream = null;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Mở game";
+            openFileDialog.Filter = "Boom Game File (*.boom)|*.boom|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Application.StartupPath + @"\Resources";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openFileDialog.FileName.ToString());
+                try
+                {
+                    string filename = openFileDialog.FileName;
+                    string[] filelines = File.ReadAllLines(filename);
+                    string txt = filelines[0];
+                    var gameConfig = JsonConvert.DeserializeObject<GameConfig>(txt);
+                    MessageBox.Show(gameConfig.col.ToString());
 
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,"Lỗi khi mở file",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void lưuVánToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var gameConfig = new GameConfig();
+            gameConfig.setInfor(row, col, boom, arr, arrOpen);
+            var txt = JsonConvert.SerializeObject(gameConfig);
 
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Application.StartupPath + @"\Resources";      
+            saveFileDialog.Title = "Lưu ván";
+            saveFileDialog.CheckFileExists = false;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.DefaultExt = "boom";
+            saveFileDialog.Filter = "Boom Game File (*.boom)|*.boom|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, txt);
+                MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
 
@@ -345,6 +387,7 @@ namespace BoomProject
             }
             return new Button();
         }
+
 
         #endregion
     }
