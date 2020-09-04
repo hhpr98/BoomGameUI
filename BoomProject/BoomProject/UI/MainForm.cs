@@ -36,6 +36,13 @@ namespace BoomProject
         public MainForm(int row, int col, int boom)
         {
             InitializeComponent();
+            Init(row, col, boom);
+            LoadBOOMArray();
+            LoadBOOMScreen();
+        }
+
+        private void Init(int row, int col, int boom)
+        {
             this.row = row;
             txtRow.Text = row.ToString();
             this.col = col;
@@ -48,8 +55,6 @@ namespace BoomProject
             this.Size = new Size(sizeX, sizeY);
             panelMain.Size = new Size(10 + col * 50 + 8, 10 + row * 50 + 8);
             panelMain.Location = new Point(280, 50);
-            LoadBOOMArray();
-            LoadBOOMScreen();
         }
 
         #region Event
@@ -104,6 +109,21 @@ namespace BoomProject
             //    s += "\n";
             //}
             //MessageBox.Show(s);
+        }
+
+        private void LoadBOOMArrayContinue(GameConfig gameConfig)
+        {
+            row = gameConfig.row;
+            col = gameConfig.col;
+            boom = gameConfig.boom;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    arr[i, j] = gameConfig.arr[i, j];
+                    arrOpen[i, j] = gameConfig.arrOpen[i, j];
+                }
+            }
         }
 
         private int countBOOM(int i,int j)
@@ -208,13 +228,7 @@ namespace BoomProject
                     }
                     btn.BackColor = Color.Red;
                     btn.Location = new Point(Xlocal, Ylocal);
-                    //btn.Click += Btn_Click;
-                    if (arr[i, j] == 'B')
-                    {
-                        btn.BackColor = Color.White;
-                        Bitmap avt = new Bitmap(Application.StartupPath + "\\Resources\\Mine.png");
-                        btn.Image = avt;
-                    }
+                    btn.Click += Btn_Click;
                     panelMain.Controls.Add(btn);
                     Xlocal += 50;
                 }
@@ -362,7 +376,9 @@ namespace BoomProject
                     string txt = filelines[0];
                     var gameConfig = JsonConvert.DeserializeObject<GameConfig>(txt);
                     //MessageBox.Show(gameConfig.col.ToString());
-
+                    LoadBOOMArrayContinue(gameConfig); // load lại col,row,boom, arr & arrOpen
+                    Init(row, col, boom); // load lại các thông số, chiều dài panel
+                    LoadBOOMScreenContinue(); // load lại những ô đã mở
 
                 }
                 catch (Exception ex)
