@@ -57,7 +57,6 @@ namespace BoomProject
             txtCol.Text = col.ToString();
             this.boom = boom;
             txtBoom.Text = boom.ToString();
-            this.notboom = row * col - boom;
             int sizeX = 300 + 10 + col * 50 + 50; // 300: từ 0->panel, 10 : lề từ panel -> button 1 , 50 : button size(50) + lề(0), 50 : từ panel -> footer
             int sizeY = 50 + 10 + row * 50 + 50 + 24; // 24 : menustrip
             this.Size = new Size(sizeX, sizeY);
@@ -68,6 +67,9 @@ namespace BoomProject
         #region Event
         private void LoadBOOMArray()
         {
+            // not boom
+            this.notboom = row * col - boom; // fix bug #6
+
             // create '0' character
             for (int i=0;i<12;i++)
             {
@@ -124,6 +126,7 @@ namespace BoomProject
             row = gameConfig.row;
             col = gameConfig.col;
             boom = gameConfig.boom;
+            notboom = row * col - boom; // fix bug #6
             for (int i = 0; i < 12; i++)
             {
                 for (int j = 0; j < 12; j++)
@@ -226,6 +229,7 @@ namespace BoomProject
                     btn.Name = "btn" + i.ToString() + j.ToString(); // btn11,btn12,btn13,btn21,...
                     if (arrOpen[i, j] == true && arr[i, j] != 'B')
                     {
+                        notboom--; // fix bug #6
                         btn.Text = arr[i, j].ToString();
                         btn.Font = new Font("Arial", 22F, FontStyle.Bold);
                         btn.ForeColor = Color.Yellow;
@@ -247,15 +251,6 @@ namespace BoomProject
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            // Right click
-            MouseEventArgs mouseEventArgs = e as MouseEventArgs;
-            if (mouseEventArgs.Button == MouseButtons.Right)
-            {
-                MessageBox.Show("Right click!");
-                return;
-            }
-
-
             //char c = '3';
             //MessageBox.Show("Clicked!" + (c-'0').ToString());
             var b = sender as Button;

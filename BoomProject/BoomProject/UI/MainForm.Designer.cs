@@ -292,9 +292,9 @@
             this.txtTitle2.ForeColor = System.Drawing.Color.Blue;
             this.txtTitle2.Location = new System.Drawing.Point(6, 58);
             this.txtTitle2.Name = "txtTitle2";
-            this.txtTitle2.Size = new System.Drawing.Size(41, 15);
+            this.txtTitle2.Size = new System.Drawing.Size(35, 15);
             this.txtTitle2.TabIndex = 1;
-            this.txtTitle2.Text = "Số cột";
+            this.txtTitle2.Text = "Thua";
             // 
             // txtTitle1
             // 
