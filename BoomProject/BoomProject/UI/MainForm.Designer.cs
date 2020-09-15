@@ -49,8 +49,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtLose = new System.Windows.Forms.Label();
+            this.txtWin = new System.Windows.Forms.Label();
+            this.txtTitle2 = new System.Windows.Forms.Label();
+            this.txtTitle1 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.cbFLag = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -164,7 +172,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(20, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 145);
+            this.groupBox1.Size = new System.Drawing.Size(210, 122);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -240,11 +248,92 @@
             this.panelMain.Size = new System.Drawing.Size(220, 220);
             this.panelMain.TabIndex = 2;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Khaki;
+            this.groupBox2.Controls.Add(this.btnReset);
+            this.groupBox2.Controls.Add(this.txtLose);
+            this.groupBox2.Controls.Add(this.txtWin);
+            this.groupBox2.Controls.Add(this.txtTitle2);
+            this.groupBox2.Controls.Add(this.txtTitle1);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox2.Location = new System.Drawing.Point(20, 187);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(210, 101);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thành tích";
+            // 
+            // txtLose
+            // 
+            this.txtLose.AutoSize = true;
+            this.txtLose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLose.Location = new System.Drawing.Point(105, 58);
+            this.txtLose.Name = "txtLose";
+            this.txtLose.Size = new System.Drawing.Size(16, 16);
+            this.txtLose.TabIndex = 4;
+            this.txtLose.Text = "0";
+            // 
+            // txtWin
+            // 
+            this.txtWin.AutoSize = true;
+            this.txtWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWin.Location = new System.Drawing.Point(105, 32);
+            this.txtWin.Name = "txtWin";
+            this.txtWin.Size = new System.Drawing.Size(16, 16);
+            this.txtWin.TabIndex = 3;
+            this.txtWin.Text = "0";
+            // 
+            // txtTitle2
+            // 
+            this.txtTitle2.AutoSize = true;
+            this.txtTitle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle2.ForeColor = System.Drawing.Color.Blue;
+            this.txtTitle2.Location = new System.Drawing.Point(6, 58);
+            this.txtTitle2.Name = "txtTitle2";
+            this.txtTitle2.Size = new System.Drawing.Size(41, 15);
+            this.txtTitle2.TabIndex = 1;
+            this.txtTitle2.Text = "Số cột";
+            // 
+            // txtTitle1
+            // 
+            this.txtTitle1.AutoSize = true;
+            this.txtTitle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle1.ForeColor = System.Drawing.Color.Blue;
+            this.txtTitle1.Location = new System.Drawing.Point(6, 32);
+            this.txtTitle1.Name = "txtTitle1";
+            this.txtTitle1.Size = new System.Drawing.Size(42, 15);
+            this.txtTitle1.TabIndex = 0;
+            this.txtTitle1.Text = "Thắng";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(147, 32);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(40, 40);
+            this.btnReset.TabIndex = 0;
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // cbFLag
+            // 
+            this.cbFLag.AutoSize = true;
+            this.cbFLag.ForeColor = System.Drawing.Color.Blue;
+            this.cbFLag.Location = new System.Drawing.Point(20, 303);
+            this.cbFLag.Name = "cbFLag";
+            this.cbFLag.Size = new System.Drawing.Size(75, 17);
+            this.cbFLag.TabIndex = 8;
+            this.cbFLag.Text = "Flag mode";
+            this.cbFLag.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 305);
+            this.ClientSize = new System.Drawing.Size(554, 362);
+            this.Controls.Add(this.cbFLag);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -257,6 +346,8 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +375,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label txtLose;
+        private System.Windows.Forms.Label txtWin;
+        private System.Windows.Forms.Label txtTitle2;
+        private System.Windows.Forms.Label txtTitle1;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.CheckBox cbFLag;
     }
 }

@@ -31,11 +31,19 @@ namespace BoomProject
                                         // 0  B  3  0
                                         // 0  0  0  0
         bool[,] arrOpen = new bool[12, 12]; // đánh dấu mảng arr đã mở những ô nào
+        int win = 0, lose = 0;
         #endregion
 
         public MainForm(int row, int col, int boom)
         {
             InitializeComponent();
+            
+            // set image
+            Bitmap img = new Bitmap(Application.StartupPath + "\\Resources\\ic_reset.png");
+            btnReset.Image = img;
+            //btnReset.BackgroundImageLayout = ImageLayout.Stretch;
+
+            // init
             Init(row, col, boom);
             LoadBOOMArray();
             LoadBOOMScreen();
@@ -239,6 +247,15 @@ namespace BoomProject
 
         private void Btn_Click(object sender, EventArgs e)
         {
+            // Right click
+            MouseEventArgs mouseEventArgs = e as MouseEventArgs;
+            if (mouseEventArgs.Button == MouseButtons.Right)
+            {
+                MessageBox.Show("Right click!");
+                return;
+            }
+
+
             //char c = '3';
             //MessageBox.Show("Clicked!" + (c-'0').ToString());
             var b = sender as Button;
@@ -254,6 +271,7 @@ namespace BoomProject
             {
                 LoadBOOMScreenDefeat();
                 MessageBox.Show("BOOMMMM!");
+                updateAchieve("lose");
                 LoadBOOMArray();
                 panelMain.Controls.Clear();
                 LoadBOOMScreen();
@@ -275,11 +293,17 @@ namespace BoomProject
                 if (notboom==0) // winner
                 {
                     MessageBox.Show("Winner!");
+                    updateAchieve("win");
                     LoadBOOMArray();
                     panelMain.Controls.Clear();
                     LoadBOOMScreen();
                 }
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            updateAchieve("reset");
         }
         #endregion
 
@@ -456,6 +480,29 @@ namespace BoomProject
             return new Button();
         }
 
+        // update status achieve
+        public void updateAchieve(string status)
+        {
+            switch (status)
+            {
+                case "win":
+                    win++;
+                    txtWin.Text = win.ToString();
+                    return;
+                case "lose":
+                    lose++;
+                    txtLose.Text = lose.ToString();
+                    return;
+                case "reset":
+                    win = 0;
+                    lose = 0;
+                    txtWin.Text = "0";
+                    txtLose.Text = "0";
+                    return;
+                default:
+                    return;
+            }    
+        }
 
         #endregion
     }
