@@ -50,11 +50,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.txtLose = new System.Windows.Forms.Label();
             this.txtWin = new System.Windows.Forms.Label();
             this.txtTitle2 = new System.Windows.Forms.Label();
             this.txtTitle1 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
             this.cbFLag = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -265,6 +265,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thành tích";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(147, 32);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(40, 40);
+            this.btnReset.TabIndex = 0;
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // txtLose
             // 
             this.txtLose.AutoSize = true;
@@ -307,15 +316,6 @@
             this.txtTitle1.TabIndex = 0;
             this.txtTitle1.Text = "Thắng";
             // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(147, 32);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(40, 40);
-            this.btnReset.TabIndex = 0;
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // cbFLag
             // 
             this.cbFLag.AutoSize = true;
@@ -342,7 +342,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Boom Game v3.0";
+            this.Text = "Boom Game v3.1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

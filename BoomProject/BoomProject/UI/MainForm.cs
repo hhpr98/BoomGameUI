@@ -384,7 +384,7 @@ namespace BoomProject
             var btn = MessageBoxButtons.OK;
             var img = MessageBoxIcon.Information;
             var title = "Giới thiệu";
-            var msg = "Boom game, v3.0. Date release : 02/09/2020";
+            var msg = "Boom game, v3.1. Date release : 16/09/2020";
             MessageBox.Show(msg, title, btn, img);
         }
 
