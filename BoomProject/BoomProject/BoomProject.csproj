@@ -103,6 +103,9 @@
     <Content Include="Resources\boomImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\ic_greenflag.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ic_reset.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

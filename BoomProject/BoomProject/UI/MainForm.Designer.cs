@@ -326,6 +326,7 @@
             this.cbFLag.TabIndex = 8;
             this.cbFLag.Text = "Flag mode";
             this.cbFLag.UseVisualStyleBackColor = true;
+            this.cbFLag.CheckedChanged += new System.EventHandler(this.cbFLag_CheckedChanged);
             // 
             // MainForm
             // 

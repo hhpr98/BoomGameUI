@@ -32,6 +32,8 @@ namespace BoomProject
                                         // 0  0  0  0
         bool[,] arrOpen = new bool[12, 12]; // đánh dấu mảng arr đã mở những ô nào
         int win = 0, lose = 0;
+        bool flagMode = false; // chế độ gắn cờ
+        bool[,] arrFlag = new bool[12, 12]; // đánh dấu mảng arr đã gắn cờ
         #endregion
 
         public MainForm(int row, int col, int boom)
@@ -69,6 +71,9 @@ namespace BoomProject
         {
             // not boom
             this.notboom = row * col - boom; // fix bug #6
+
+            // flag load
+            LoadBOOMArrayFlag();
 
             // create '0' character
             for (int i=0;i<12;i++)
@@ -127,12 +132,29 @@ namespace BoomProject
             col = gameConfig.col;
             boom = gameConfig.boom;
             notboom = row * col - boom; // fix bug #6
+            LoadBOOMArrayFlag();
             for (int i = 0; i < 12; i++)
             {
                 for (int j = 0; j < 12; j++)
                 {
                     arr[i, j] = gameConfig.arr[i, j];
                     arrOpen[i, j] = gameConfig.arrOpen[i, j];
+                }
+            }
+        }
+
+        private void LoadBOOMArrayFlag()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (arrFlag[i,j] == true)
+                    {
+                        var btnName = "btn" + i.ToString() + j.ToString();
+                        setFlagButton(btnName, false);
+                    }    
+                    arrFlag[i, j] = false;
                 }
             }
         }
@@ -247,6 +269,7 @@ namespace BoomProject
                 Xlocal = 10;
                 Ylocal += 50;
             }
+            LoadBOOMArrayFlag();
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -256,12 +279,36 @@ namespace BoomProject
             var b = sender as Button;
             //MessageBox.Show(b.Name);
 
-            // nếu ô này đã mở thì thôi, return
-            if (b.Text != "") return;
 
+            // nếu ô này đã mở thì thôi, return
+            if (b.Text != "" && flagMode == false) return;
+
+            // Lấy tọa độ i,j
             string txt = b.Name; // ex : txt01
             int arr_i = (txt[3] - '0'); // tọa độ i
             int arr_j = (txt[4] - '0'); // tọa độ j
+
+            // mode flag
+            if (flagMode == true)
+            {
+                if (arrOpen[arr_i,arr_j] == false)
+                {
+                    if (arrFlag[arr_i, arr_j] == false) // chưa đánh dấu => đánh dấu
+                    {
+                        setFlagButton(b.Name, true);
+                        arrFlag[arr_i, arr_j] = true;
+                    }
+                    else // đã đánh dấu => bỏ đánh dấu
+                    {
+                        setFlagButton(b.Name, false);
+                        arrFlag[arr_i, arr_j] = false;
+                    }
+                }
+                return;
+            }
+
+
+            // mode click bình thường
             if (arr[arr_i,arr_j]=='B') // có boom
             {
                 LoadBOOMScreenDefeat();
@@ -299,6 +346,12 @@ namespace BoomProject
         private void btnReset_Click(object sender, EventArgs e)
         {
             updateAchieve("reset");
+        }
+
+        private void cbFLag_CheckedChanged(object sender, EventArgs e)
+        {
+            this.flagMode = !this.flagMode;
+            //MessageBox.Show("Flag mode: " + this.flagMode);
         }
         #endregion
 
@@ -497,6 +550,30 @@ namespace BoomProject
                 default:
                     return;
             }    
+        }
+
+        // set flag cho button mode : true : set , false : unset
+        public void setFlagButton(string btnName,bool mode)
+        {
+            foreach (Control control in panelMain.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    if (control.Name == btnName)
+                    {
+                        var btn = control as Button;
+                        if (mode == true) // set flag
+                        {
+                            Bitmap bmp = new Bitmap(Application.StartupPath + "\\Resources\\ic_greenflag.png");
+                            btn.Image = bmp;
+                        }   
+                        else // unset flag
+                        {
+                            btn.Image = null;
+                        }    
+                    }
+                }
+            }
         }
 
         #endregion
